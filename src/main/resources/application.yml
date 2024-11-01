@@ -2,7 +2,7 @@ spring:
     application:
         name: cars4us
     datasource:
-        url: jdbc:postgresql://localhost:5432/cars_4_us
+        url: jdbc:postgresql://localhost:5432/postgres
         username: postgres
         password: postgres
         driver-class-name: org.postgresql.Driver
@@ -16,3 +16,7 @@ spring:
             ddl-auto: create-drop
     liquibase:
         changelog: classpath:db/master-changelog.yaml
+
+springdoc:
+    swagger-ui:
+        path: /swagger-apis
