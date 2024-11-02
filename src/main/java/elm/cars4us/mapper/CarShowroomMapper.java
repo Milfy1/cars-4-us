@@ -3,6 +3,7 @@ package elm.cars4us.mapper;
 import elm.cars4us.constants.Constants;
 import elm.cars4us.dto.CarShowroomDTO;
 import elm.cars4us.dto.CarShowroomSummaryDTO;
+import elm.cars4us.dto.CarShowroomUpdateDTO;
 import elm.cars4us.entity.CarShowroom;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -20,5 +21,4 @@ public interface CarShowroomMapper {
      CarShowroomSummaryDTO mapToSummaryDto(CarShowroom carShowroom);
      CarShowroomDTO map(CarShowroom carShowroom);
      List<CarShowroomDTO> map(Page<CarShowroom> carShowroom);
-
 }
