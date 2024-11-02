@@ -6,8 +6,8 @@ public final class Constants {
 
     public static class URL {
         public static final String BASE_URL = "/api/v1/cars4us";
-
-        public static final String CAR_SHOWROOM = "/car-showroom";
+        public static final String CAR_CONTROLLER = "/car";
+        public static final String CAR_SHOWROOM_CONTROLLER = "/car-showroom";
         public static final String CREATE = "/create";
         public static final String GET_ALL = "/get-all";
         public static final String COMMERCIAL_REGISTRATION_NUMBER = "/{commercialRegistrationNumber}";
@@ -23,7 +23,8 @@ public final class Constants {
         public static final String SWAGGER_DESCRIPTION = "Cars for us Apis.";
     }
     public static class Exceptions {
-        public static final String CAR_SHOWROOM_WITH_ID = "CarShowroom with Commercial Registration Number ";
+        public static final String CAR_SHOWROOM_WITH_COMMERCIAL_REGISTRATION_NUMBER = "CarShowroom with Commercial Registration Number ";
+        public static final String CAR_SHOWROOM_WITH_ID = "CarShowroom with ID ";
         public static final String NOT_FOUND = " not found";
     }
 

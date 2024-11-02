@@ -17,4 +17,6 @@ public interface CarShowroomRepository extends JpaRepository<CarShowroom, UUID> 
     Optional<CarShowroom> findByCommercialRegistrationNumber(String commercialRegistrationNumber);
 
     Page<CarShowroom> findAllByActive(boolean active, Pageable pageable);
+
+    Optional<CarShowroom> findByActiveAndId(boolean active, UUID carShowroomId);
 }

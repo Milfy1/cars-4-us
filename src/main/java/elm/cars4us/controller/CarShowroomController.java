@@ -16,13 +16,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 import static elm.cars4us.constants.Constants.Name.DESC;
 import static elm.cars4us.constants.Constants.URL.*;
 
 @RestController
-@RequestMapping(BASE_URL+CAR_SHOWROOM)
+@RequestMapping(BASE_URL+ CAR_SHOWROOM_CONTROLLER)
 @Slf4j
 @AllArgsConstructor
 public class CarShowroomController {

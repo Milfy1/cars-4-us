@@ -13,7 +13,7 @@ spring:
                 format_sql: true
         show-sql: true
         hibernate:
-            ddl-auto: create-drop
+            ddl-auto: update
     liquibase:
         changelog: classpath:db/master-changelog.yaml
 

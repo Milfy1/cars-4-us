@@ -7,15 +7,12 @@ import elm.cars4us.entity.CarShowroom;
 import elm.cars4us.exceptions.NotFoundException;
 import elm.cars4us.mapper.CarShowroomMapper;
 import elm.cars4us.repository.CarShowroomRepository;
-import elm.cars4us.utility.Utility;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
 
 import static elm.cars4us.constants.Constants.Exceptions.*;
 
@@ -43,7 +40,7 @@ public class CarShowroomServiceImpl implements CarShowroomService {
     @Override
     public CarShowroomDTO updateCarShowroom(String commercialRegistrationNumber, CarShowroomUpdateDTO carShowroomUpdateDTO) {
         CarShowroom carShowroom = carShowroomRepository.findByActiveAndCommercialRegistrationNumber(true,commercialRegistrationNumber)
-                .orElseThrow(() -> new NotFoundException(CAR_SHOWROOM_WITH_ID + commercialRegistrationNumber + NOT_FOUND));
+                .orElseThrow(() -> new NotFoundException(CAR_SHOWROOM_WITH_COMMERCIAL_REGISTRATION_NUMBER + commercialRegistrationNumber + NOT_FOUND));
 
         carShowroom.setManagerName(Objects.nonNull(carShowroomUpdateDTO.getManagerName())? carShowroomUpdateDTO.getManagerName() : carShowroom.getManagerName());
         carShowroom.setAddress(Objects.nonNull(carShowroomUpdateDTO.getAddress())? carShowroomUpdateDTO.getAddress() : carShowroom.getAddress());
@@ -56,14 +53,14 @@ public class CarShowroomServiceImpl implements CarShowroomService {
     @Override
     public CarShowroomDTO findByCommercialRegistrationNumber(String commercialRegistrationNumber) {
         CarShowroom carShowroom = carShowroomRepository.findByActiveAndCommercialRegistrationNumber(true,commercialRegistrationNumber)
-                 .orElseThrow(() -> new NotFoundException(CAR_SHOWROOM_WITH_ID + commercialRegistrationNumber + NOT_FOUND));
+                 .orElseThrow(() -> new NotFoundException(CAR_SHOWROOM_WITH_COMMERCIAL_REGISTRATION_NUMBER + commercialRegistrationNumber + NOT_FOUND));
         return carShowroomMapper.map(carShowroom);
     }
 
     @Override
     public String deleteCarShowroomByCommercialRegistrationNumber(String commercialRegistrationNumber) {
         CarShowroom carShowroom = carShowroomRepository.findByCommercialRegistrationNumber(commercialRegistrationNumber)
-                .orElseThrow(() -> new NotFoundException(CAR_SHOWROOM_WITH_ID + commercialRegistrationNumber + NOT_FOUND));
+                .orElseThrow(() -> new NotFoundException(CAR_SHOWROOM_WITH_COMMERCIAL_REGISTRATION_NUMBER + commercialRegistrationNumber + NOT_FOUND));
         // Check if CarShowroom is already inactive
         if (!carShowroom.isActive()) {
             return "CarShowroom with commercial registration number " + commercialRegistrationNumber + " is already inactive";
