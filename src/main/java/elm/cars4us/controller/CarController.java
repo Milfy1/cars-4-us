@@ -23,13 +23,13 @@ public class CarController {
 
     private final CarService carService;
 
-    @PostMapping(CREATE)
+    @PostMapping()
     public ResponseEntity<CarDTO> createCarShowroom(@Validated @RequestBody CarDTO carDTO){
         CarDTO createdCar = carService.createCar(carDTO);
         return new ResponseEntity<>(createdCar, HttpStatus.CREATED);
     }
 
-    @GetMapping(GET_ALL)
+    @GetMapping()
     public ResponseEntity<Page<ReturnedCarDTO>> findAllCars(@RequestParam int offset,
                                                             @RequestParam int pageSize,
                                                             @RequestParam(required = false) String vin,

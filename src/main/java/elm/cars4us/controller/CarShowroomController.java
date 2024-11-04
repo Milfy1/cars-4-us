@@ -28,13 +28,13 @@ public class CarShowroomController {
     private final CarShowroomService carShowroomService;
 
 
-    @PostMapping(CREATE)
+    @PostMapping()
     public ResponseEntity<CarShowroomDTO> createCarShowroom(@Validated @RequestBody CarShowroomDTO carShowroomDTO){
        CarShowroomDTO createdCarShowroom = carShowroomService.createCarShowroom(carShowroomDTO);
         return new ResponseEntity<>(createdCarShowroom, HttpStatus.CREATED);
     }
 
-    @GetMapping(GET_ALL)
+    @GetMapping()
     public ResponseEntity<Page<CarShowroomSummaryDTO>> findAllCarShowrooms(@RequestParam int offset,
                                                                            @RequestParam int pageSize,
                                                                            @Parameter(description = "Field to sort by", example = "name",
@@ -50,19 +50,19 @@ public class CarShowroomController {
     }
 
     //get by Commercial Registration Number
-    @GetMapping(GET+COMMERCIAL_REGISTRATION_NUMBER)
+    @GetMapping(COMMERCIAL_REGISTRATION_NUMBER)
     public ResponseEntity<CarShowroomDTO> updateCarShowroomByCommercialRegistrationNumber(@PathVariable String commercialRegistrationNumber){
         CarShowroomDTO carShowroom = carShowroomService.findByCommercialRegistrationNumber(commercialRegistrationNumber);
         return new ResponseEntity<>(carShowroom, HttpStatus.OK);
     }
 
-    @PutMapping(UPDATE+COMMERCIAL_REGISTRATION_NUMBER)
+    @PutMapping(COMMERCIAL_REGISTRATION_NUMBER)
     public ResponseEntity<CarShowroomDTO> findCarShowroomByCommercialRegistrationNumber(@PathVariable String commercialRegistrationNumber,@Validated @RequestBody CarShowroomUpdateDTO carShowroomUpdateDTO){
         CarShowroomDTO carShowroom = carShowroomService.updateCarShowroom(commercialRegistrationNumber,carShowroomUpdateDTO);
         return new ResponseEntity<>(carShowroom, HttpStatus.OK);
     }
 
-    @DeleteMapping(DELETE+COMMERCIAL_REGISTRATION_NUMBER)
+    @DeleteMapping(COMMERCIAL_REGISTRATION_NUMBER)
     public ResponseEntity<String> deleteCarShowroomByCommercialRegistrationNumber(@PathVariable String commercialRegistrationNumber){
        String response = carShowroomService.deleteCarShowroomByCommercialRegistrationNumber(commercialRegistrationNumber);
         return new ResponseEntity<>(response, HttpStatus.OK);

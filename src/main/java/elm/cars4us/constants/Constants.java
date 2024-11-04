@@ -5,15 +5,10 @@ public final class Constants {
     }
 
     public static class URL {
-        public static final String BASE_URL = "/api/v1/cars4us";
-        public static final String CAR_CONTROLLER = "/car";
-        public static final String CAR_SHOWROOM_CONTROLLER = "/car-showroom";
-        public static final String CREATE = "/create";
-        public static final String GET_ALL = "/get-all";
+        public static final String BASE_URL = "/api/v1";
+        public static final String CAR_CONTROLLER = "/cars";
+        public static final String CAR_SHOWROOM_CONTROLLER = "/car-showrooms";
         public static final String COMMERCIAL_REGISTRATION_NUMBER = "/{commercialRegistrationNumber}";
-        public static final String UPDATE = "/update";
-        public static final String GET = "/get";
-        public static final String DELETE = "/delete";
     }
     public static class Name {
         public static final String SPRING = "spring";
