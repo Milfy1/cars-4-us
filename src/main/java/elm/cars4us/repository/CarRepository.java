@@ -19,13 +19,13 @@ public interface CarRepository extends JpaRepository<Car, UUID> {
 
     @Query("SELECT new elm.cars4us.dto.ReturnedCarDTO(c.vin, c.maker, c.model, c.modelYear, c.price, c.carShowroom.name, c.carShowroom.contactNumber) " +
             "FROM Car c " +
-            "WHERE (:vin IS NULL OR LOWER(c.vin) LIKE LOWER(CONCAT('%', :vin, '%'))) " +
-            "AND (:maker IS NULL OR LOWER(c.maker) LIKE LOWER(CONCAT('%', :maker, '%'))) " +
-            "AND (:model IS NULL OR LOWER(c.model) LIKE LOWER(CONCAT('%', :model, '%'))) " +
+            "WHERE (:vin IS NULL OR c.vin LIKE %:vin%) " +
+            "AND (:maker IS NULL OR c.maker LIKE %:maker% ) " +
+            "AND (:model IS NULL OR c.model LIKE %:model%) " +
             "AND (:modelYear IS NULL OR c.modelYear = :modelYear) " +
             "AND (:price IS NULL OR c.price = :price) " +
-            "AND (:carShowroomName IS NULL OR LOWER(c.carShowroom.name) LIKE LOWER(CONCAT('%', :carShowroomName, '%'))) " +
-            "AND (:contactNumber IS NULL OR LOWER(c.carShowroom.contactNumber) LIKE LOWER(CONCAT('%', :contactNumber, '%')))")
+            "AND (:carShowroomName IS NULL OR c.carShowroom.name LIKE %:carShowroomName%) " +
+            "AND (:contactNumber IS NULL OR c.carShowroom.contactNumber LIKE %:contactNumber%)")
     Page<ReturnedCarDTO> getCarsWithFilters(Pageable pageable,
                                             @Param("vin") String vin,
                                             @Param("maker") String maker,
